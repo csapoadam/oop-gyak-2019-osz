@@ -39,6 +39,11 @@ Date::Date(int day, int month, int year) {
 	y = year;
 }
 
+Date& Date::addYears(int n) {
+	y += n;
+	return *this;
+}
+
 void Date::print() {
 	std::cout << d << "/" << m << "/" << y << std::endl;
 }
