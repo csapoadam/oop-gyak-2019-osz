@@ -16,31 +16,52 @@ Date::Date() {
 }
 
 Date::Date(int day, int month, int year) {
-	m = squash(1, 12, month);
+	d = day;
+	m = month;
+	y = year;
+	int daysOverflow = this->sanitizeAndReturnOverflowInDays();
+	std::cout << "overflowed " << daysOverflow << " days" << std::endl;
+}
+
+int Date::sanitizeAndReturnOverflowInDays() {
+	int daysOriginal = d;
+
+	m = squash(1, 12, m);
 
 	bool isFebruary = (m == 2);
 	bool hasThirtyDays = (m == 4 ||
 		m == 6 ||
 		m == 9 ||
 		m == 11);
-	bool isLeapYear = (year % 4) == 0;
+	bool isLeapYear = (y % 4) == 0;
 
 	if (isFebruary) {
 		d = isLeapYear
-			? squash(1, 29, day)
-			: d = squash(1, 28, day);
+			? squash(1, 29, d)
+			: d = squash(1, 28, d);
 	}
 	else {
 		d = hasThirtyDays
-			? squash(1, 30, day)
-			: squash(1, 31, day);
+			? squash(1, 30, d)
+			: squash(1, 31, d);
 	}
 
-	y = year;
+	return daysOriginal - d;
 }
 
 Date& Date::addYears(int n) {
 	y += n;
+	return *this;
+}
+
+Date& Date::addDays(int n) {
+	d += n;
+	int overflow = this->sanitizeAndReturnOverflowInDays();
+	while (overflow > 0) {
+		m += 1;
+		d = overflow;
+		overflow = this->sanitizeAndReturnOverflowInDays();
+	}
 	return *this;
 }
 
