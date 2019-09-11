@@ -19,34 +19,64 @@ Date::Date(int day, int month, int year) {
 	d = day;
 	m = month;
 	y = year;
+	std::cout << d << "/" << m << "/" << y << " -> ";
 	int daysOverflow = this->sanitizeAndReturnOverflowInDays();
+	std::cout << d << "/" << m << "/" << y << std::endl;
 	std::cout << "overflowed " << daysOverflow << " days" << std::endl;
 }
 
 int Date::sanitizeAndReturnOverflowInDays() {
 	int daysOriginal = d;
+	int monthsOriginal = m;
 
 	m = squash(1, 12, m);
+	d = squash(1, this->daysInThisMonth(), d);
 
-	bool isFebruary = (m == 2);
-	bool hasThirtyDays = (m == 4 ||
-		m == 6 ||
-		m == 9 ||
-		m == 11);
-	bool isLeapYear = (y % 4) == 0;
+	int overflowInDays = daysOriginal - d > 0
+		? daysOriginal - d
+		: 0;
 
+	int monthsRemaining = monthsOriginal - m;
+	if (monthsRemaining > 0) {
+		overflowInDays += daysInFirstNMonthsOfYearZ(monthsRemaining, y + 1);
+	}
+
+	return overflowInDays;
+}
+
+int Date::daysInThisMonth() {
+	return daysInMonthXYearZ(m,y);
+}
+
+int Date::daysInMonthXYearZ(int x, int z) {
+	bool isFebruary = (x == 2);
+	bool isLeapYear = (z % 4) == 0;
+	bool hasThirtyDays = (x == 4 ||
+		x == 6 ||
+		x == 9 ||
+		x == 11);
 	if (isFebruary) {
-		d = isLeapYear
-			? squash(1, 29, d)
-			: d = squash(1, 28, d);
+		return isLeapYear ? 29 : 28;
 	}
 	else {
-		d = hasThirtyDays
-			? squash(1, 30, d)
-			: squash(1, 31, d);
+		return hasThirtyDays ? 30 : 31;
 	}
+}
 
-	return daysOriginal - d;
+int Date::daysInFirstNMonthsOfYearZ(int n, int z) {
+	int daysCounted = 0;
+	int yearOfMonthCounted = z;
+	int currentMonth = 1;
+	while (n > 0) {
+		daysCounted += daysInMonthXYearZ(currentMonth, yearOfMonthCounted);
+		currentMonth++;
+		if (currentMonth > 12) {
+			currentMonth = 1;
+			yearOfMonthCounted++;
+		}
+		n--;
+	}
+	return daysCounted;
 }
 
 Date& Date::addYears(int n) {
@@ -58,7 +88,7 @@ Date& Date::addDays(int n) {
 	d += n;
 	int overflow = this->sanitizeAndReturnOverflowInDays();
 	while (overflow > 0) {
-		m += 1;
+		m = m + 1 > 12 ? 1 : m + 1;
 		d = overflow;
 		overflow = this->sanitizeAndReturnOverflowInDays();
 	}

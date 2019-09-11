@@ -4,6 +4,9 @@
 class Date {
 	int d, m, y;
 	int sanitizeAndReturnOverflowInDays();
+	int daysInThisMonth();
+	int daysInMonthXYearZ(int, int);
+	int daysInFirstNMonthsOfYearZ(int, int);
 public:
 	Date();
 	Date(int day, int month, int year);
