@@ -7,9 +7,22 @@ void LinkedList::addNode(int val) {
 		std::cout << "creating root node w/ value " << val << std::endl;
 		root = new Node(val);
 	}
+	else {
+		std::cout << "creating non-root node w/ value " << val << std::endl;
+		Node* currentNode = root;
+		while (currentNode->getNext()) {
+			currentNode = currentNode->getNext();
+		}
+		Node* addedNode = new Node(val);
+		currentNode->setNext(addedNode);
+	}
 }
 
 void LinkedList::print() {
-	std::cout << "root node value is: ";
-	std::cout << root->getValue() << std::endl;
+	Node* currentNode = root;
+	while (currentNode->getNext()) {
+		std::cout << currentNode->getValue() << ", ";
+		currentNode = currentNode->getNext();
+	}
+	std::cout << currentNode->getValue() << std::endl;
 }
