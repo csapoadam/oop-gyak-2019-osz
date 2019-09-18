@@ -3,17 +3,9 @@
 class Node {
 	int value;
 	Node* next;
+	friend class LinkedList;
 public:
 	Node(int val) : value(val), next(nullptr) {}
-	int getValue() {
-		return value;
-	}
-	Node* getNext() {
-		return next;
-	}
-	void setNext(Node* np) {
-		next = np;
-	}
 };
 
 class LinkedList {

@@ -10,16 +10,16 @@ void LinkedList::addNode(int val) {
 		tail = newTail;
 	}
 	else {
-		tail->setNext(newTail);
+		tail->next = newTail;
 		tail = newTail;
 	}
 }
 
 void LinkedList::print() {
 	Node* currentNode = root;
-	while (currentNode->getNext()) {
-		std::cout << currentNode->getValue() << ", ";
-		currentNode = currentNode->getNext();
+	while (currentNode->next) {
+		std::cout << currentNode->value << ", ";
+		currentNode = currentNode->next;
 	}
-	std::cout << currentNode->getValue() << std::endl;
+	std::cout << currentNode->value << std::endl;
 }
