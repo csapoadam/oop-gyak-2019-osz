@@ -17,6 +17,20 @@ LinkedList::~LinkedList() {
 	}
 }
 
+LinkedList::LinkedList(const LinkedList& other) {
+	if (other.root) { // fontos!
+		Node* currentNodeInOther = other.root;
+		std::cout << "cloning node w/ value: " << currentNodeInOther->value << std::endl;
+		addNode(currentNodeInOther->value);
+
+		while (currentNodeInOther->next) {
+			currentNodeInOther = currentNodeInOther->next;
+			std::cout << "cloning node w/ value: " << currentNodeInOther->value << std::endl;
+			addNode(currentNodeInOther->value);
+		}
+	}
+}
+
 void LinkedList::addNode(int val) {
 	std::cout << "creating node w/ value " << val << std::endl;
 	Node* newTail = new Node(val);
