@@ -3,18 +3,15 @@
 #include <iostream>
 
 void LinkedList::addNode(int val) {
+	std::cout << "creating node w/ value " << val << std::endl;
+	Node* newTail = new Node(val);
 	if (!root) { // magyaran: nullptr
-		std::cout << "creating root node w/ value " << val << std::endl;
-		root = new Node(val);
+		root = newTail;
+		tail = newTail;
 	}
 	else {
-		std::cout << "creating non-root node w/ value " << val << std::endl;
-		Node* currentNode = root;
-		while (currentNode->getNext()) {
-			currentNode = currentNode->getNext();
-		}
-		Node* addedNode = new Node(val);
-		currentNode->setNext(addedNode);
+		tail->setNext(newTail);
+		tail = newTail;
 	}
 }
 

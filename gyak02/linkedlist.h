@@ -18,8 +18,9 @@ public:
 
 class LinkedList {
 	Node* root;
+	Node* tail;
 public:
-	LinkedList() : root(nullptr) {}
+	LinkedList() : root(nullptr), tail(nullptr) {}
 	void addNode(int val);
 	void print();
 };
