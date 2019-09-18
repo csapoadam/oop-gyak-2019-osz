@@ -23,18 +23,17 @@ int main()
 	my_ll.addNode(7);
 	my_ll.print();
 
-	LinkedList my_ll2(my_ll); // copy constructor - automatikusan generalt!
+	LinkedList my_ll2;
+	my_ll2.addNode(8);
+	my_ll2.addNode(9);
 	my_ll2.print();
 
-	LinkedList* my_ll3 = new LinkedList();
-	my_ll3->addNode(8);
-	my_ll3->addNode(9);
-	my_ll3->addNode(10);
-	my_ll3->print();
+	my_ll2 = my_ll; // assignment is mukodik, de rosszul van definialva (by default)!
+	my_ll.addNode(12); // innen latszik, h a ketto ugyanazon a mem.teruleten van!
+	// raadasul: mi van a regi my_ll2 elemekkel?
+	// ott csucsulnek a memoriaban felszabaditatlanul!
+	my_ll2.print();
 
-	LinkedList my_ll4(*my_ll3); // copy constructor - automatikusan generalt!
-	delete my_ll3;
-	my_ll4.print();
 
 
 	/*
