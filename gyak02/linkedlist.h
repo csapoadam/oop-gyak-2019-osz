@@ -1,14 +1,12 @@
 #pragma once
 
-class Node {
-	int value;
-	Node* next;
-	friend class LinkedList;
-public:
-	Node(int val) : value(val), next(nullptr) {}
-};
-
 class LinkedList {
+	class Node {
+	public:
+		int value;
+		Node* next;
+		Node(int val) : value(val), next(nullptr) {}
+	};
 	Node* root;
 	Node* tail;
 public:

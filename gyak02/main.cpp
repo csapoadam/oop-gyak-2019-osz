@@ -14,7 +14,12 @@ int main()
 	my_ll.addNode(7);
 	my_ll.print();
 
+	// ha Node kulon osztaly letrehozhatjuk, de nem sok mindent tudunk vele csinalni
+	// ha raadasul privat beagyazott, nem tudjuk peldanyositani kivulrol!
+	// ez a legjobb!
+	// Node n(55);
+	
+
 	std::cin.get();
     return 0;
 }
-
