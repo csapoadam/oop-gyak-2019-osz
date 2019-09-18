@@ -17,6 +17,9 @@ void f() { // szimulaljuk a main()-tol eltero fv-ek hasznalatat
 
 int main()
 {
+	LinkedList myTestLinkedList;
+	myTestLinkedList.print(); // whoops! fix print empty LinkedList!
+
 	for (int i = 0; i < 10000; i++) {
 		f();
 		if (i % 100 == 0) {
