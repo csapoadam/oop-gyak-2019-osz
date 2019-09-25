@@ -23,46 +23,26 @@ int main()
 	my_ll1.addNode(7);
 	my_ll1.print();
 
-	LinkedList my_ll2;
-	my_ll2.addNode(8);
-	my_ll2.addNode(9);
-	my_ll2.print();
+	std::cout << "index of 5 is: " << my_ll1.findNodeIndexByValue(5) << std::endl;
+	std::cout << "index of 6 is: " << my_ll1.findNodeIndexByValue(6) << std::endl;
+	std::cout << "index of 7 is: " << my_ll1.findNodeIndexByValue(7) << std::endl;
+	std::cout << "index of 8 is: " << my_ll1.findNodeIndexByValue(8) << std::endl;
 
-	LinkedList my_ll3;
-	my_ll3.addNode(11);
-	my_ll3.addNode(12);
-	my_ll3.addNode(13);
-	my_ll3.addNode(14);
-	my_ll3.print();
+	std::cout << "inserting value of 15 after index -1" << std::endl;
+	my_ll1.insertValueAfterIndex(15, -1); // rootba kell h tegye...
+	my_ll1.print(); // 15, 5, 6, 7
 
-	LinkedList my_ll4;
-	my_ll4.addNode(15);
-	my_ll4.addNode(16);
-	my_ll4.addNode(17);
-	my_ll4.print();
+	std::cout << "inserting value of 16 after index 2" << std::endl;
+	my_ll1.insertValueAfterIndex(16, 2); // rootba kell h tegye...
+	my_ll1.print(); // 15, 5, 6, 16, 7
 
-	std::cout << "copying 1 to 2" << std::endl;
-	my_ll2 = my_ll1;
-	my_ll2.print();
+	std::cout << "inserting value of 17 after index 4" << std::endl;
+	my_ll1.insertValueAfterIndex(17, 4); // rootba kell h tegye...
+	my_ll1.print(); // 15, 5, 6, 16, 7, 17
 
-	std::cout << "copying 1 to 3" << std::endl;
-	my_ll3 = my_ll1;
-	my_ll3.print();
-
-	std::cout << "copying 1 to 4" << std::endl;
-	my_ll4 = my_ll1;
-	my_ll4.print();
-
-	std::cout << "adding a different node to each one" << std::endl;
-	my_ll1.addNode(100);
-	my_ll2.addNode(101);
-	my_ll3.addNode(102);
-	my_ll4.addNode(103);
-
-	my_ll1.print();
-	my_ll2.print();
-	my_ll3.print();
-	my_ll4.print();
+	std::cout << "inserting value of 18 after index 40" << std::endl;
+	my_ll1.insertValueAfterIndex(18, 40); // rootba kell h tegye...
+	my_ll1.print(); // 15, 5, 6, 16, 7, 17, 18
 
 	std::cout << "done" << std::endl;
 

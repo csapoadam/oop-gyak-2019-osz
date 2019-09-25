@@ -132,10 +132,59 @@ void LinkedList::addNode(int val) {
 void LinkedList::print() {
 	if (root) { // fontos!
 		Node* currentNode = root;
+		std::cout << "printing currentNode " << currentNode->value << std::endl;
 		while (currentNode->next) {
 			std::cout << currentNode->value << ", ";
 			currentNode = currentNode->next;
 		}
 		std::cout << currentNode->value << std::endl;
 	}
+}
+
+int LinkedList::findNodeIndexByValue(int val) {
+	Node* currentNode = root;
+	int count = 0;
+	while (currentNode) {
+		if (currentNode->value == val) {
+			return count;
+		}
+		currentNode = currentNode->next;
+		count++;
+	}
+	return -1;
+}
+
+void LinkedList::insertValueAfterIndex(int val, int inx) {
+	// mindenkeppen letrehozunk egy uj Node-ot a heapen
+	// utana az a kerdes, hova szurjuk be!
+	Node* newNode = new Node(val);
+
+	Node* nextNode = root;
+	Node* previousNode = nullptr;
+	int count = 0;
+	while (nextNode) {
+		if (inx < count) {
+			// tulhaladtuk azt a helyet, ahol be kell szurni!
+			// pl. ha a 0. utan akarjuk beszurni, inx erteke 0, count pedig mar 1
+			// tehat: currentNode elotti node utan kell beszurni
+			if (!previousNode) { // if (count == 0) is jo...
+				// root helyere szurjuk be. Ez akkor lehetseges, a inx negativ erteku...
+				Node* tmp = root; // tmp elnevezes jo, itt csak megjegyezzuk a korabbi root cimet
+				root = newNode;
+				root->next = tmp; // tail pedig marad valtozatlan...
+				return;
+			}
+			else {
+				previousNode->next = newNode;
+				newNode->next = nextNode; // tail pedig marad valtozatlan...
+				return;
+			}
+		}
+		previousNode = nextNode;
+		nextNode = nextNode->next;
+		count++;
+	}
+	// ha meg itt vagyunk, akkor a vegere kell szurni...
+	previousNode->next = newNode;
+	tail = newNode;
 }

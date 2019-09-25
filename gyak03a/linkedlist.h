@@ -22,5 +22,7 @@ public:
 	// masik opcio: definialjuk!
 	LinkedList& operator=(const LinkedList&);
 	void addNode(int val);
+	int findNodeIndexByValue(int val);
+	void insertValueAfterIndex(int val, int index);
 	void print();
 };
