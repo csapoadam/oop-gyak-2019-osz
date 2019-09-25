@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 
+#include "positions.h"
+
 class Player {
 	std::string name;
 	int id;
@@ -15,14 +17,6 @@ public:
 	}
 	int getId() { return id; }
 	std::string getName() { return name; }
-};
-
-enum class POSITIONS {
-	forward,
-	midfield,
-	defense,
-	goalkeeper,
-	none
 };
 
 class Team {
@@ -52,24 +46,9 @@ public:
 		for (int inx = 0; inx < players.size(); inx++) {
 			std::cout << jerseynums.at(inx);
 			std::cout << ": " << players.at(inx)->getName();
-			switch (positions.at(inx)) {
-				case POSITIONS::forward:
-					std::cout << "(playing as a forward)";
-					break;
-				case POSITIONS::midfield:
-					std::cout << "(playing as a midfielder)";
-					break;
-				case POSITIONS::defense:
-					std::cout << "(playing as a defender)";
-					break;
-				case POSITIONS::goalkeeper:
-					std::cout << "(playing as a goalkeeper)";
-					break;
-				default:
-					std::cout << "(playing in an undefined role)";
-					break;
-			}
-			
+			std::cout << "(playing as a "
+				<< stringify_position(positions.at(inx))
+				<< ")";
 			std::cout << std::endl;
 		}
 	}

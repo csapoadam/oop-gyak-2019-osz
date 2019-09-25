@@ -33,6 +33,9 @@ int main()
 	team.setPosition(verratti, POSITIONS::defense);
 	team.setPosition(verratti, POSITIONS::midfield);
 
+	Player ambigo("Ambigo Rando");
+	team.addPlayer(ambigo, 15);
+
 	team.printPlayers(); // kiirja a jatekosok nevet, mezszamat es lehetseges pozicioit
 	
 	std::cin.get();
