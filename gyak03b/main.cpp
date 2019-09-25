@@ -9,12 +9,15 @@
 
 int main()
 {
-	/*Player mb("Mbappe");
+	/*
+	Player::setPlayerIdStart(10);
+	Player mb("Mbappe");
 	Player bl("blabla");
 	Player bu("blublu");
 	std::cout << "id of Mbappe: " << mb.getId() << std::endl;
 	std::cout << "id of bl: " << bl.getId() << std::endl;
-	std::cout << "id of bu: " << bu.getId() << std::endl;*/
+	std::cout << "id of bu: " << bu.getId() << std::endl;
+	*/
 
 	
 	Team team;

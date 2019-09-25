@@ -6,18 +6,22 @@
 
 #include "positions.h"
 
+
 class Player {
 	std::string name;
 	int id;
+	static int PLAYERID_CNT;
 public:
 	Player(const std::string& name) : name(name) {
-		static int idcnt = 0;
-		id = idcnt;
-		idcnt++;
+		id = PLAYERID_CNT;
+		PLAYERID_CNT++;
 	}
 	int getId() { return id; }
 	std::string getName() { return name; }
+	static void setPlayerIdStart(int pidcnt) { PLAYERID_CNT = pidcnt;  }
 };
+
+int Player::PLAYERID_CNT = 0;
 
 class Team {
 	std::vector<Player*> players;
