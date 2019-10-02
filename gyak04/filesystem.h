@@ -2,24 +2,44 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <ctime>
 
 class Node {
 	std::string name;
 	int sizeInBytes;
+	time_t createdAt;
 public:
-	Node(std::string name, int sz) : name(name), sizeInBytes(sz) { }
-	void print() {
+	Node(std::string name, int sz) : 
+		name(name), 
+		sizeInBytes(sz),
+		createdAt(time(nullptr))
+	{ }
+	virtual void print() {
 		std::cout << "I am node w/ name: " << name << std::endl;
 	}
 	std::string getName() { return name; }
 	int getSize() { return sizeInBytes; }
+	std::string getCreatedAt() { 
+		char time_val[26];
+		struct tm res;
+		gmtime_s(&res, &createdAt);
+		asctime_s(time_val, 26, &res);
+
+		int i;
+		std::string s = "";
+		for (i = 0; i < 26; i++) {
+			s = s + time_val[i];
+		}
+		return s;
+	}
 };
 
 class TextNode : public Node {
 public:
 	TextNode(std::string name, int sz) : Node(name, sz) {}
 	void print() {
-		std::cout << "I am a TextNode w/ name " << getName() << " and size " << getSize() << " bytes" << std::endl;
+		std::cout << "I am a TextNode w/ name " << getName() << " and size " << getSize() << " bytes";
+		std::cout << " I was created at: " << getCreatedAt() << std::endl;
 	}
 };
 
@@ -32,7 +52,8 @@ public:
 	}
 	void print() {
 		std::cout << "I am an ImageNode w/ name " << getName() << ", size " << getSize() << " bytes";
-		std::cout << " and dimensions " << width << " x " << height << std::endl;
+		std::cout << " and dimensions " << width << " x " << height;
+		std::cout << " I was created at: " << getCreatedAt() << std::endl;
 	}
 };
 
