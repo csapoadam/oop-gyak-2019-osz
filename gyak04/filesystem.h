@@ -16,8 +16,13 @@ public:
 		createdAt(DateTime()),
 		lastModifiedAt(DateTime(createdAt))
 	{ }
-	virtual void print() {
-		std::cout << "I am node w/ name: " << name << std::endl;
+	virtual void print(bool doPrintWithoutName = false) {
+		if (!doPrintWithoutName) {
+			std::cout << "I am node w/ name: " << name << ". ";
+		}
+		std::cout << "My size in bytes is: " << sizeInBytes << std::endl;
+		std::cout << " I was created at: " << getCreatedAt() << std::endl;
+		std::cout << " I was last modified at: " << getLastModifiedAt() << std::endl;
 	}
 	std::string getName() { return name; }
 	int getSize() { return sizeInBytes; }
@@ -33,9 +38,8 @@ class TextNode : public Node {
 public:
 	TextNode(std::string name, int sz) : Node(name, sz) {}
 	void print() {
-		std::cout << "I am a TextNode w/ name " << getName() << " and size " << getSize() << " bytes";
-		std::cout << " I was created at: " << getCreatedAt() << std::endl;
-		std::cout << " I was last modified at: " << getLastModifiedAt() << std::endl;
+		std::cout << "I am a TextNode w/ name " << getName() << ". ";
+		Node::print(true);	
 	}
 };
 
@@ -47,10 +51,9 @@ public:
 		width = w;
 	}
 	void print() {
-		std::cout << "I am an ImageNode w/ name " << getName() << ", size " << getSize() << " bytes";
-		std::cout << " and dimensions " << width << " x " << height;
-		std::cout << " I was created at: " << getCreatedAt() << std::endl;
-		std::cout << " I was last modified at: " << getLastModifiedAt() << std::endl;
+		std::cout << "I am an ImageNode w/ name " << getName();
+		std::cout << " and dimensions " << width << " x " << height << ". ";
+		Node::print(true);
 	}
 };
 
