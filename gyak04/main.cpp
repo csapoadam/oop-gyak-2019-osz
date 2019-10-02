@@ -14,11 +14,14 @@ int main()
   i1.print();
   ImageNode i2 = ImageNode("MyImage2.jpg", 6500, 250, 150);
   i2.print();
+  std::cout << "--------------------------" << std::endl;
 
   DocumentStore ds;
   ds.addDocument(&t1);
   ds.addDocument(&i1);
   ds.addDocument(&i2);
+
+  ds.printAll();
 
   std::cin.get();
     return 0;

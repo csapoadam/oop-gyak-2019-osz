@@ -35,3 +35,17 @@ public:
 		std::cout << " and dimensions " << width << " x " << height << std::endl;
 	}
 };
+
+class DocumentStore {
+	std::vector<Node*> documents;
+public:
+	DocumentStore() {}
+	void addDocument(Node* np) {
+		documents.push_back(np);
+	}
+	void printAll() {
+		for (Node* n : documents) {
+			n->print();
+		}
+	}
+};
