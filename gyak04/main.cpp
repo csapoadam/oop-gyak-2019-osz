@@ -13,7 +13,10 @@ int main()
   t1.print();
   ImageNode i1 = ImageNode("MyImage.jpg", 650, 200, 150);
   i1.print();
-  std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+  std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+  i1.touch();
+
+  std::this_thread::sleep_for(std::chrono::milliseconds(5000));
   ImageNode i2 = ImageNode("MyImage2.jpg", 6500, 250, 150);
   i2.print();
   std::cout << "--------------------------" << std::endl;
@@ -23,7 +26,8 @@ int main()
   ds.addDocument(&i1);
   ds.addDocument(&i2);
 
-  ds.printAll();
+  // ds.printAll();
+  ds.printImages();
 
   std::cin.get();
     return 0;

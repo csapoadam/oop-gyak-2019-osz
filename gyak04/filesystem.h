@@ -9,6 +9,12 @@ class Node {
 	int sizeInBytes;
 	DateTime createdAt;
 	DateTime lastModifiedAt;
+	std::string createdAtToString() {
+		return createdAt.toString();
+	}
+	std::string lastModifiedAtToString() {
+		return lastModifiedAt.toString();
+	}
 public:
 	Node(std::string name, int sz) : 
 		name(name), 
@@ -21,17 +27,15 @@ public:
 			std::cout << "I am node w/ name: " << name << ". ";
 		}
 		std::cout << "My size in bytes is: " << sizeInBytes << std::endl;
-		std::cout << " I was created at: " << getCreatedAt() << std::endl;
-		std::cout << " I was last modified at: " << getLastModifiedAt() << std::endl;
+		std::cout << " I was created at: " << createdAtToString() << ". ";
+		std::cout << "I was last modified at: " << lastModifiedAtToString() << std::endl;
 	}
 	std::string getName() { return name; }
 	int getSize() { return sizeInBytes; }
-	std::string getCreatedAt() {
-		return createdAt.toString();
+	void touch() {
+		lastModifiedAt = DateTime();
 	}
-	std::string getLastModifiedAt() {
-		return lastModifiedAt.toString();
-	}
+	
 };
 
 class TextNode : public Node {
@@ -67,6 +71,14 @@ public:
 	void printAll() {
 		for (Node* n : documents) {
 			n->print();
+		}
+	}
+	void printImages() {
+		for (Node* n : documents) {
+			ImageNode* inp = dynamic_cast<ImageNode*>(n);
+			if (inp != nullptr) {
+				inp->print();
+			}
 		}
 	}
 };
