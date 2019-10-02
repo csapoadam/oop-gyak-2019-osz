@@ -9,7 +9,6 @@
 
 int main()
 {
-  
   TextNode t1 = TextNode("MyTextFile1.txt", 30);
   t1.print();
   ImageNode i1 = ImageNode("MyImage.jpg", 650, 200, 150);
