@@ -2,25 +2,43 @@
 
 #include <string>
 #include <vector>
+#include "parts.h"
 
 class Vehicle {
   std::string name;
+  std::vector<Part*> parts;
 public:
   Vehicle(std::string n) : name(n) {}
   virtual void print() = 0; // mivel van legalabb 1 virtualis fv ami 0, ezert absztrakt osztaly - nem peldanyosithato
   std::string getName() { return name; }
+  virtual void addPart(Part* pp) { parts.push_back(pp); }
+  void printParts() {
+    for (Part* pp : parts) {
+      pp->print();
+    }
+  }
+  int getNumParts() {
+    return parts.size();
+  }
+
 };
 
 class Car : public Vehicle {
 public:
   Car(std::string n) : Vehicle(n) {}
-  void print() { std::cout << "Car named " << getName() << std::endl; }
+  void print() { 
+    std::cout << "Car named " << getName() << " with " << getNumParts() << " parts" << std::endl;
+    printParts();
+  }
 };
 
 class MotorBike : public Vehicle {
 public:
   MotorBike(std::string n) : Vehicle(n) {}
-  void print() { std::cout << "Motorbike named " << getName() << std::endl; }
+  void print() {
+    std::cout << "Motorbike named " << getName() << " with " << getNumParts() << " parts" << std::endl;
+    printParts();
+  }
 };
 
 class VehiclePark {

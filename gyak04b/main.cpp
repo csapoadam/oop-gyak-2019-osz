@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "vehicles.h"
+#include "parts.h"
 
 int main()
 {
@@ -14,6 +15,11 @@ int main()
   Vehicle* c2 = new Car("Erno's Porsche");
   Vehicle* c3 = new Car("Adam's Mercedes");
   Vehicle* mb1 = new MotorBike("Mate's Harley");
+
+  c1->addPart(new Part("Air conditioner", 2));
+  c2->addPart(new Part("Engine", 6));
+  c3->addPart(new Part("Piston", 7));
+  c3->addPart(new Part("Spark plug", 3));
 
   VehiclePark vehiclepark;
   vehiclepark.addVehicle(c1);
