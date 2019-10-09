@@ -11,10 +11,10 @@ void f() {
 	FileSystem fs;
 	Folder* root = fs.getRoot();
 	Node* MyDocuments = fs.addFolder("MyDocuments", root);
-	/*Node* Bin = fs.addFolder("bin", root);
+	Node* Bin = fs.addFolder("bin", root);
 	Node* Misc = fs.addFolder("misc", root);
 	Node* Misc2 = fs.addFolder("misc2", Misc);
-
+	/*
 	BinaryFile bfile1("prog1");
 	BinaryFile bfile2("prog2");
 	TextFile tfile("readme.txt");

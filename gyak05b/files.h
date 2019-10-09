@@ -2,7 +2,10 @@
 #include <vector>
 
 class Node {
-
+public:
+	virtual void print() {} // vigyazat: e nelkul nem megy az, hogy
+	// Folder* parentAsFolder = dynamic_cast<Folder*>(parent);
+	// (marmint a filesystem.h fajlban)
 };
 
 class Folder : public Node {
@@ -14,4 +17,5 @@ public:
 	void addChild(Folder* fp) {
 		children.push_back(fp);
 	}
+	void print() {}
 };
