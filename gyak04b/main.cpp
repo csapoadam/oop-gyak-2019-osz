@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <iostream>
 
 // a megoldott plusz feladatoknal allitsa 1-re a megfelelo pelda kodreszek bekapcsolasahoz
@@ -27,7 +28,7 @@ int main()
   vehiclepark.addVehicle(c1);
   vehiclepark.addVehicle(c2);
 
-  vehiclepark.amortize();
+  //vehiclepark.amortize();
   std::cout << "After 1 year:\n";
   vehiclepark.printVehicles();
 
@@ -38,8 +39,8 @@ int main()
     vehiclepark.amortize();
     std::cout << "After " << y << " years:\n";
     vehiclepark.printVehicles();
-    if (y == 6) vehiclepark.repairCars();
-    else if (y == 7) vehiclepark.repairBikes();
+    //if (y == 6) vehiclepark.repairCars();
+    //else if (y == 7) vehiclepark.repairBikes();
 #if PLUS1
     else if (y == 8) vehiclepark.repairVehicles<Vehicle>();
 #endif

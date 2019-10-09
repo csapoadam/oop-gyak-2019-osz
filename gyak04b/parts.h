@@ -14,6 +14,17 @@ public:
 	{}
 
 	void print() {
-		std::cout << "\t" << name << " (" << age << " years old)" << std::endl;
+		std::cout << "\t" << name << " (" << age << " years old)";
+		if (amortizationTimeLeft == 0) {
+			std::cout << " - (needs repair!)";
+		}
+		std::cout << std::endl;
+	}
+
+	void amortize() {
+		age++;
+		amortizationTimeLeft = amortizationTimeLeft - 1 > -1 ?
+			amortizationTimeLeft - 1 :
+			0;
 	}
 };

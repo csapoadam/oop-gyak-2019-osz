@@ -20,7 +20,11 @@ public:
   int getNumParts() {
     return parts.size();
   }
-
+  void amortize() {
+    for (Part* pp : parts) {
+      pp->amortize();
+    }
+  }
 };
 
 class Car : public Vehicle {
@@ -52,6 +56,12 @@ public:
     std::cout << "Vehicles in park are :" << std::endl;
     for (Vehicle* vp : vehiclepark) {
       vp->print();
+    }
+  }
+  void amortize() {
+    // vegig megyunk az osszes jarmu osszes alkatreszen...
+    for (Vehicle* vp : vehiclepark) {
+      vp->amortize();
     }
   }
 };
