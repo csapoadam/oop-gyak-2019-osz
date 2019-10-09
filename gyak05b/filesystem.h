@@ -4,7 +4,7 @@
 class FileSystem {
 	Folder* root;
 public:
-	FileSystem () : root(new Folder("root")) {}
+	FileSystem () : root(new Folder("root", 0)) {}
 	Folder * getRoot() { return root; }
 	//Folder * addFolder(std::string foldername, Folder* parent) {
 	// igy lett volna a logikus, de a feladatkiiras miatt (amin nem
@@ -14,7 +14,7 @@ public:
 		// dynamic castolnunk kell
 		Folder* parentAsFolder = dynamic_cast<Folder*>(parent);
 		if (parentAsFolder) {
-			Folder* newfolder = new Folder(foldername);
+			Folder* newfolder = new Folder(foldername, parent->getIndentLevel() + 1);
 			parentAsFolder->addChild(newfolder);
 			return newfolder;
 		}
