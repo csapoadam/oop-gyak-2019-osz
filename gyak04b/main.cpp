@@ -23,6 +23,7 @@ int main()
   c2->addPart(new Part("Engine", 6));
   c3->addPart(new Part("Piston", 7));
   c3->addPart(new Part("Spark plug", 3));
+  mb1->addPart(new Part("Air conditioner", 4));
 
   VehiclePark vehiclepark;
   vehiclepark.addVehicle(c1);
@@ -39,7 +40,7 @@ int main()
     vehiclepark.amortize();
     std::cout << "After " << y << " years:\n";
     vehiclepark.printVehicles();
-    //if (y == 6) vehiclepark.repairCars();
+    if (y == 6) vehiclepark.repairCars();
     //else if (y == 7) vehiclepark.repairBikes();
 #if PLUS1
     else if (y == 8) vehiclepark.repairVehicles<Vehicle>();

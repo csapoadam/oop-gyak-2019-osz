@@ -4,11 +4,13 @@
 
 class Part {
 	std::string name;
+	int amortizationTime;
 	int amortizationTimeLeft;
 	int age;
 public:
 	Part(std::string n, int atl) :
 		name(n),
+		amortizationTime(atl),
 		amortizationTimeLeft(atl),
 		age(0)
 	{}
@@ -26,5 +28,10 @@ public:
 		amortizationTimeLeft = amortizationTimeLeft - 1 > -1 ?
 			amortizationTimeLeft - 1 :
 			0;
+	}
+
+	void repair() {
+		age = 0;
+		amortizationTimeLeft = amortizationTime;
 	}
 };

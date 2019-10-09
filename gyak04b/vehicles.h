@@ -25,6 +25,11 @@ public:
       pp->amortize();
     }
   }
+  void repair() {
+    for (Part* pp : parts) {
+      pp->repair();
+    }
+  }
 };
 
 class Car : public Vehicle {
@@ -62,6 +67,15 @@ public:
     // vegig megyunk az osszes jarmu osszes alkatreszen...
     for (Vehicle* vp : vehiclepark) {
       vp->amortize();
+    }
+  }
+
+  void repairCars() {
+    for (Vehicle* vp : vehiclepark) {
+      // csak az autok erdekesek...
+      if (dynamic_cast<Car*>(vp)) {
+        vp->repair();
+      }
     }
   }
 };
