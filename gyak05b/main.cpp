@@ -11,7 +11,7 @@ void f() {
 	FileSystem fs;
 	Folder* root = fs.getRoot();
 	Node* MyDocuments = fs.addFolder("MyDocuments", root);
-	Node* Bin = fs.addFolder("bin", root);
+	/*Node* Bin = fs.addFolder("bin", root);
 	Node* Misc = fs.addFolder("misc", root);
 	Node* Misc2 = fs.addFolder("misc2", Misc);
 
@@ -25,7 +25,7 @@ void f() {
 	fs.addFile(&tfile, MyDocuments);
 	fs.addFile(&tfile2, Misc2);
 
-	fs.print();
+	fs.print();*/
 
 	// Kiirja, hogy:
 	// Folder w/ name: root
@@ -41,11 +41,13 @@ void f() {
 
 int main()
 {
-	for (int i = 0; i < 10; i++) {
+	/*for (int i = 0; i < 10; i++) {
 		f();
 		char c; // vegig u.annyi mem.fogyasztas!
 		std::cin >> c;
-	}
+	}     */
+	f();
+	std::cin.get();
     return 0;
 }
 
