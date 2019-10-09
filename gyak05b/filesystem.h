@@ -19,4 +19,13 @@ public:
 			return newfolder;
 		}
 	}
+
+	void addFile(File* fp, Node * parent) {
+		// mivel hulye volt a feladat keszitoje, ezert most
+		// dynamic castolnunk kell
+		Folder* parentAsFolder = dynamic_cast<Folder*>(parent);
+		if (parentAsFolder) {
+			parentAsFolder->addChild(fp);
+		}
+	}
 };

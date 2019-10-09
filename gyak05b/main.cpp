@@ -14,7 +14,7 @@ void f() {
 	Node* Bin = fs.addFolder("bin", root);
 	Node* Misc = fs.addFolder("misc", root);
 	Node* Misc2 = fs.addFolder("misc2", Misc);
-	/*
+
 	BinaryFile bfile1("prog1");
 	BinaryFile bfile2("prog2");
 	TextFile tfile("readme.txt");
@@ -24,7 +24,7 @@ void f() {
 	fs.addFile(&bfile2, Bin);
 	fs.addFile(&tfile, MyDocuments);
 	fs.addFile(&tfile2, Misc2);
-
+	/*
 	fs.print();*/
 
 	// Kiirja, hogy:
