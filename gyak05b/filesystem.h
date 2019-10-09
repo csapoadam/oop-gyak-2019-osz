@@ -5,6 +5,22 @@ class FileSystem {
 	Folder* root;
 public:
 	FileSystem () : root(new Folder("root", 0)) {}
+	~FileSystem() {
+		std::vector<Node*> nodesLeftToVisit;
+		nodesLeftToVisit.push_back(root);
+		while (nodesLeftToVisit.size() > 0) {
+			int lastIndex = nodesLeftToVisit.size() - 1;
+			Node* current = nodesLeftToVisit.at(lastIndex);
+			nodesLeftToVisit.pop_back(); // kitoroljuk es majd belerakjuk current gyermekeit!
+										 // de csak akkor vannak gyermekei, ha folder es nem file
+			if (Folder* currentAsFolder = dynamic_cast<Folder*>(current)) {
+				for (Node* child : currentAsFolder->getChildren()) {
+					nodesLeftToVisit.push_back(child);
+				}
+				delete currentAsFolder;
+			}
+		}
+	}
 	Folder * getRoot() { return root; }
 	//Folder * addFolder(std::string foldername, Folder* parent) {
 	// igy lett volna a logikus, de a feladatkiiras miatt (amin nem

@@ -14,17 +14,17 @@ void f() {
 	Node* Bin = fs.addFolder("bin", root);
 	Node* Misc = fs.addFolder("misc", root);
 	Node* Misc2 = fs.addFolder("misc2", Misc);
-
-	BinaryFile bfile1("prog1");
-	BinaryFile bfile2("prog2");
-	TextFile tfile("readme.txt");
-	TextFile tfile2("log.txt");
-
+	
+	BinaryFile bfile1("prog1", 0);
+	BinaryFile bfile2("prog2", 0);
+	TextFile tfile("readme.txt", 0);
+	TextFile tfile2("log.txt", 0);
+	
 	fs.addFile(&bfile1, Bin);
 	fs.addFile(&bfile2, Bin);
 	fs.addFile(&tfile, MyDocuments);
 	fs.addFile(&tfile2, Misc2);
-
+	
 	fs.print();
 
 	// Kiirja, hogy:
@@ -41,13 +41,11 @@ void f() {
 
 int main()
 {
-	/*for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 10; i++) {
 		f();
 		char c; // vegig u.annyi mem.fogyasztas!
 		std::cin >> c;
-	}     */
-	f();
-	std::cin.get();
+	}
     return 0;
 }
 
