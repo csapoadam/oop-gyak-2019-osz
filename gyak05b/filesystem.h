@@ -28,4 +28,21 @@ public:
 			parentAsFolder->addChild(fp);
 		}
 	}
+
+	void print() {
+		std::vector<Node*> nodesLeftToVisit;
+		nodesLeftToVisit.push_back(root);
+		while (nodesLeftToVisit.size() > 0) {
+			int lastIndex = nodesLeftToVisit.size() - 1;
+			Node* current = nodesLeftToVisit.at(lastIndex);
+			nodesLeftToVisit.pop_back(); // kitoroljuk es majd belerakjuk current gyermekeit!
+			// de csak akkor vannak gyermekei, ha folder es nem file
+			if (Folder* currentAsFolder = dynamic_cast<Folder*>(current)) {
+				for (Node* child : currentAsFolder->getChildren()) {
+					nodesLeftToVisit.push_back(child);
+				}
+			}
+			current->print();
+		}
+	}
 };

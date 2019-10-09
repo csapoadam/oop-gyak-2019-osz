@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <iostream>
 
 class Node {
 	std::string name;
@@ -18,7 +19,12 @@ public:
 	void addChild(Node* fp) {
 		children.push_back(fp);
 	}
-	void print() {}
+	const std::vector<Node*>& getChildren() {
+		return children;
+	}
+	void print() {
+		std::cout << "Folder w/ name: " << getName() << std::endl;
+	}
 };
 
 // mivel mukodik mindketto:
@@ -35,9 +41,15 @@ public:
 class BinaryFile : public File {
 public:
 	BinaryFile(std::string fname) : File(fname) {}
+	void print() {
+		std::cout << "Binary File w/ name: " << getName() << std::endl;
+	}
 };
 
 class TextFile : public File {
 public:
 	TextFile(std::string fname) : File(fname) {}
+	void print() {
+		std::cout << "Text File w/ name: " << getName() << std::endl;
+	}
 };

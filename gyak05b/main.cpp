@@ -24,8 +24,8 @@ void f() {
 	fs.addFile(&bfile2, Bin);
 	fs.addFile(&tfile, MyDocuments);
 	fs.addFile(&tfile2, Misc2);
-	/*
-	fs.print();*/
+
+	fs.print();
 
 	// Kiirja, hogy:
 	// Folder w/ name: root
