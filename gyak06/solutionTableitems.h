@@ -10,7 +10,7 @@ public:
 	}
 };
 
-class City : TableItemType {
+class City : public TableItemType {
 private:
 	std::string cityName;
 	std::string country;
