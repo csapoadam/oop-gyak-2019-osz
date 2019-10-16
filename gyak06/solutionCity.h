@@ -14,6 +14,9 @@ public:
 	std::string toString() override {
 		return cityName + " - " + country + " - " + std::to_string(population);
 	}
+	std::string getKey() {
+		return cityName;
+	}
 	friend std::istream& operator>>(std::istream& is, City& c);
 	friend std::ostream& operator<<(std::ostream& os, City& c);
 };
