@@ -25,7 +25,7 @@ public:
 
 std::istream& operator>>(std::istream& is, City& c) {
 	std::cout << "Enter name of city: ";
-	is >> c.country;
+	is >> c.cityName;
 	std::cout << "Enter name of country: ";
 	is >> c.country;
 	std::cout << "Enter population: ";
