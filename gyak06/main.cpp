@@ -34,6 +34,13 @@ int main()
 // Pelda kimenet:
 /*
 Enter name of city:
+Gyor
+Enter country in which city is located:
+Hungary
+Enter population of city:
+130000
+
+Enter name of city:
 Boston
 Enter country in which city is located:
 USA
@@ -47,12 +54,6 @@ Hungary
 Enter population of city:
 2000000
 
-Enter name of city:
-Gyor
-Enter country in which city is located:
-Hungary
-Enter population of city:
-130000
 
 Boston - USA - 685000
 Budapest - Hungary - 2000000
