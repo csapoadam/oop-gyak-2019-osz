@@ -4,6 +4,7 @@
 
 const int MAX_TABLE_SZ = 2;
 
+
 class GyakTableException : public std::exception {
 private:
 	std::string reason;
@@ -31,5 +32,10 @@ public:
 		}
 		data[currentSize] = newitem;
 		currentSize++;
+	}
+	void traverseTable(void(*funcPtr)(TableItemType*)) {
+		for (int inx = 0; inx < currentSize; inx++) {
+			funcPtr(data[inx]);
+		}
 	}
 };

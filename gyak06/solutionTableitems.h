@@ -5,9 +5,7 @@
 
 class TableItemType {
 public:
-	std::string toString() {
-		return "dummy";
-	}
+	virtual std::string toString() = 0;
 };
 
 class City : public TableItemType {
@@ -19,6 +17,9 @@ public:
 	City() {}
 	City(std::string cn, std::string co, int pop) :
 		cityName(cn), country(co), population(pop) {}
+	std::string toString() override {
+		return cityName + " - " + country + " - " + std::to_string(population);
+	}
 	friend std::istream& operator>>(std::istream& is, City& c);
 	friend std::ostream& operator<<(std::ostream& os, City& c);
 };
