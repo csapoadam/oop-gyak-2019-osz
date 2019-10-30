@@ -2,28 +2,30 @@
 #include "climenuitem.h"
 #include "climenu.h"
 
-CliMenuItem::CliMenuItem(const std::string& text, CliMenu* submenu) {
+CliMenuItem::CliMenuItem(const std::string& text) {
 	itemText = text;
-	itemSubMenu = submenu;
-	functionPointer = nullptr;
 }
 
-CliMenuItem::CliMenuItem(const std::string& text, void(*fp)()) {
-	itemText = text;
+SubmenuCliMenuItem::SubmenuCliMenuItem(const std::string& text,
+	CliMenu* submenu) : CliMenuItem(text) {
+	itemSubMenu = submenu;
+}
+
+FunctionalCliMenuItem::FunctionalCliMenuItem(const std::string& text,
+	void(*fp)()) : CliMenuItem(text) {
 	functionPointer = fp;
-	itemSubMenu = nullptr;
 }
 
 std::string& CliMenuItem::getItemText() {
 	return itemText;
 }
 
-void CliMenuItem::call() {
-	if (functionPointer) {
-		functionPointer();
-	}
+void SubmenuCliMenuItem::select() {}
+
+void FunctionalCliMenuItem::select() {
+	functionPointer();
 }
 
-CliMenu* CliMenuItem::getSubMenu() {
+CliMenu* SubmenuCliMenuItem::getSubMenu() {
 	return itemSubMenu;
 }

@@ -22,10 +22,10 @@ CliMenu* CliMenu::selectItem(int choice) {
 	// de az .at() az bound check-et is tartalmaz
 	try {
 		CliMenuItem* mip = menuItems.at(choice - 1); // at az 0-tol szamoz
-		mip->call();
-		CliMenu* smp = mip->getSubMenu();
-		if (smp) {
-			return smp;
+		mip->select();
+
+		if (SubmenuCliMenuItem* scmip = dynamic_cast<SubmenuCliMenuItem*>(mip)) {
+			return scmip->getSubMenu();
 		}
 		else {
 			return this;

@@ -29,18 +29,18 @@ int main() {
 	CliMenu mainMenu;
 	CliMenu helpSubmenu;
 
-	CliMenuItem item1("Display restaurant menu", &menuDisplayFunction);
-	CliMenuItem item2("Refresh menu", &menuRefreshFunction); // beolvassa a legujabb menut egy file-bol
-	CliMenuItem item3("Help", &helpSubmenu); // help almenut jeleniti meg
-	CliMenuItem item4("Exit", &exitFunction);
+	FunctionalCliMenuItem item1("Display restaurant menu", &menuDisplayFunction);
+	FunctionalCliMenuItem item2("Refresh menu", &menuRefreshFunction); // beolvassa a legujabb menut egy file-bol
+	SubmenuCliMenuItem item3("Help", &helpSubmenu); // help almenut jeleniti meg
+	FunctionalCliMenuItem item4("Exit", &exitFunction);
 
 	mainMenu.addItem(&item1);
 	mainMenu.addItem(&item2);
 	mainMenu.addItem(&item3);
 	mainMenu.addItem(&item4);
 
-	CliMenuItem item5("About this restaurant", &about); // beolvassa az about-ot egy file-bol...
-	CliMenuItem item6("Back to main menu", &mainMenu);
+	FunctionalCliMenuItem item5("About this restaurant", &about); // beolvassa az about-ot egy file-bol...
+	SubmenuCliMenuItem item6("Back to main menu", &mainMenu);
 
 	helpSubmenu.addItem(&item5);
 	helpSubmenu.addItem(&item6);
