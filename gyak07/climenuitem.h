@@ -12,7 +12,7 @@ private:
 public:
 	CliMenuItem(const std::string& text);
 	std::string& getItemText();
-	virtual void select() = 0;
+	virtual CliMenu* selectAndReturnNextMenuBasedOnCurrentMenu(CliMenu*) = 0;
 };
 
 class FunctionalCliMenuItem : public CliMenuItem {
@@ -21,7 +21,7 @@ private:
 							  // alapjan tudjuk, hogy ilyen fv pointer kell ide
 public:
 	FunctionalCliMenuItem(const std::string& text, void(*fp)());
-	virtual void select();
+	virtual CliMenu* selectAndReturnNextMenuBasedOnCurrentMenu(CliMenu*);
 };
 
 class SubmenuCliMenuItem : public CliMenuItem {
@@ -30,5 +30,5 @@ private:
 public:
 	SubmenuCliMenuItem(const std::string& text, CliMenu* submenu);
 	CliMenu* getSubMenu();
-	virtual void select();
+	virtual CliMenu* selectAndReturnNextMenuBasedOnCurrentMenu(CliMenu*);
 };

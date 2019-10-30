@@ -22,14 +22,7 @@ CliMenu* CliMenu::selectItem(int choice) {
 	// de az .at() az bound check-et is tartalmaz
 	try {
 		CliMenuItem* mip = menuItems.at(choice - 1); // at az 0-tol szamoz
-		mip->select();
-
-		if (SubmenuCliMenuItem* scmip = dynamic_cast<SubmenuCliMenuItem*>(mip)) {
-			return scmip->getSubMenu();
-		}
-		else {
-			return this;
-		}
+		return mip->selectAndReturnNextMenuBasedOnCurrentMenu(this);
 	}
 	catch (std::out_of_range e) {
 		std::cout << "No such menu item, dodo!" << std::endl;

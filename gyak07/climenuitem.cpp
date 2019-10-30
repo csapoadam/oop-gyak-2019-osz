@@ -20,10 +20,13 @@ std::string& CliMenuItem::getItemText() {
 	return itemText;
 }
 
-void SubmenuCliMenuItem::select() {}
+CliMenu* SubmenuCliMenuItem::selectAndReturnNextMenuBasedOnCurrentMenu(CliMenu* cmp) {
+	return getSubMenu();
+}
 
-void FunctionalCliMenuItem::select() {
+CliMenu* FunctionalCliMenuItem::selectAndReturnNextMenuBasedOnCurrentMenu(CliMenu* cmp) {
 	functionPointer();
+	return cmp;
 }
 
 CliMenu* SubmenuCliMenuItem::getSubMenu() {
