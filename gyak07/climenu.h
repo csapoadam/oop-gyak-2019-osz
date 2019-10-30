@@ -4,6 +4,13 @@
 #include <vector>
 #include <string>
 
+// forward deklaracio szukseges!
+//class CliMenuItem;
+// kulonben:
+// CliMenuItem: undeclared identifier
+// -> nincs deklaralva!
+class CliMenuItem;
+
 class CliMenu {
 private:
 	std::vector<CliMenuItem*> menuItems;
@@ -13,6 +20,8 @@ public:
 	}
 	void display() {
 		int itemCounter = 1;
+		// use of undefined type 'CliMenuItem'
+		// -> nincs definialva!
 		for (CliMenuItem* clip : menuItems) {
 			std::cout << itemCounter << ": " << clip->getItemText()
 				<< std::endl;
