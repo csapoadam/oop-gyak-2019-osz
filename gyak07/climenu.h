@@ -1,7 +1,24 @@
 #pragma once
 
-class CliMenu {
+#include <iostream>
+#include <vector>
+#include <string>
 
+class CliMenu {
+private:
+	std::vector<CliMenuItem*> menuItems;
+public:
+	void addItem(CliMenuItem* clip) {
+		menuItems.push_back(clip);
+	}
+	void display() {
+		int itemCounter = 1;
+		for (CliMenuItem* clip : menuItems) {
+			std::cout << itemCounter << ": " << clip->getItemText()
+				<< std::endl;
+			itemCounter++;
+		}
+	}
 };
 
 class CliMenuItem {
@@ -18,5 +35,8 @@ public:
 	CliMenuItem(const std::string& text, void (*fp)()) {
 		itemText = text;
 		functionPointer = fp;
+	}
+	std::string& getItemText() {
+		return itemText;
 	}
 };

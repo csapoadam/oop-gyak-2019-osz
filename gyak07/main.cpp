@@ -11,6 +11,8 @@ void menuDisplayFunction() {}
 
 void menuRefreshFunction() {}
 
+void about() {}
+
 int main() {
 	CliMenu mainMenu;
 	CliMenu helpSubmenu;
@@ -35,6 +37,7 @@ int main() {
 
 	mainMenu.display();
 	CliMenu* whatMenuIsDisplayed = &mainMenu;
+	/*
 	int choice;
 	while (true) {
 		std::cin >> choice;
@@ -45,6 +48,7 @@ int main() {
 		// ezzel meg ki kell egesziteni ezt a while ciklust!
 		// selectItem persze gondoskodik a fv meghivasarol is, ha arrol van szo
 	}
+	*/
 
 	std::cin.get();
 	return 0;
