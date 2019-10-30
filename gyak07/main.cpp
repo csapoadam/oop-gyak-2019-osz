@@ -7,11 +7,17 @@ void exitFunction() {
 	exit(EXIT_SUCCESS);
 }
 
-void menuDisplayFunction() {}
+void menuDisplayFunction() {
+	std::cout << "Here is the menu, dear guest" << std::endl;
+}
 
-void menuRefreshFunction() {}
+void menuRefreshFunction() {
+	std::cout << "Refreshing menu..." << std::endl;
+}
 
-void about() {}
+void about() {
+	std::cout << "I'm telling you I don't know anything" << std::endl;
+}
 
 int main() {
 	CliMenu mainMenu;
@@ -37,18 +43,15 @@ int main() {
 
 	mainMenu.display();
 	CliMenu* whatMenuIsDisplayed = &mainMenu;
-	/*
+	
 	int choice;
 	while (true) {
 		std::cin >> choice;
-		CliMenu* perhapsNewMenu = whatMenuIsDisplayed->selectItem(choice);
+		CliMenu* nextMenuToDisplay = whatMenuIsDisplayed->selectItem(choice);
 
-		// ha almenure kattintottunk, az ujat kell megjeleniteni...
-		// ellenkezo esetben a regit...
-		// ezzel meg ki kell egesziteni ezt a while ciklust!
-		// selectItem persze gondoskodik a fv meghivasarol is, ha arrol van szo
+		nextMenuToDisplay->display();
+		whatMenuIsDisplayed = nextMenuToDisplay;
 	}
-	*/
 
 	std::cin.get();
 	return 0;

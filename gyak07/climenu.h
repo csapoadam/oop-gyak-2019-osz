@@ -19,6 +19,8 @@ public:
 		menuItems.push_back(clip);
 	}
 	void display();
+	CliMenu* selectItem(int choice); // ez is csak kivul definialhato
+	// mivel kell hozza CliMenuItem
 };
 
 class CliMenuItem {
@@ -31,13 +33,23 @@ public:
 	CliMenuItem(const std::string& text, CliMenu* submenu) {
 		itemText = text;
 		itemSubMenu = submenu;
+		functionPointer = nullptr;
 	}
 	CliMenuItem(const std::string& text, void (*fp)()) {
 		itemText = text;
 		functionPointer = fp;
+		itemSubMenu = nullptr;
 	}
 	std::string& getItemText() {
 		return itemText;
+	}
+	void call() {
+		if (functionPointer) {
+			functionPointer();
+		}
+	}
+	CliMenu* getSubMenu() {
+		return itemSubMenu;
 	}
 };
 
@@ -49,5 +61,25 @@ void CliMenu::display() {
 		std::cout << itemCounter << ": " << clip->getItemText()
 			<< std::endl;
 		itemCounter++;
+	}
+}
+
+CliMenu* CliMenu::selectItem(int choice) {
+	// ket opcio: menuItems[x], menuItems.at(x)
+	// de az .at() az bound check-et is tartalmaz
+	try {
+		CliMenuItem* mip = menuItems.at(choice-1); // at az 0-tol szamoz
+		mip->call();
+		CliMenu* smp = mip->getSubMenu();
+		if (smp) {
+			return smp;
+		}
+		else {
+			return this;
+		}
+	}
+	catch (std::out_of_range e) {
+		std::cout << "No such menu item, dodo!" << std::endl;
+		return this;
 	}
 }
