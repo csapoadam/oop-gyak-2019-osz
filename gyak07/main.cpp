@@ -2,6 +2,12 @@
 #include <iostream>
 #include <stdlib.h> // exit-hez kell
 #include "climenu.h"
+#include "climenuitem.h"
+// fontos: a header file-ok csak interfeszt tartalmaznak
+// a forrasfajlok implementaljak a fv-eket es minden headert include-olnak
+// (amit szukseges)
+// a header file-okban minden osztalyt forward deklaralunk, amit ott hasznalunk
+// -> ekkor soha nem lehet baj, mind1, milyen sorrendben include-olunk
 
 void exitFunction() {
 	exit(EXIT_SUCCESS);
