@@ -18,16 +18,7 @@ public:
 	void addItem(CliMenuItem* clip) {
 		menuItems.push_back(clip);
 	}
-	void display() {
-		int itemCounter = 1;
-		// use of undefined type 'CliMenuItem'
-		// -> nincs definialva!
-		for (CliMenuItem* clip : menuItems) {
-			std::cout << itemCounter << ": " << clip->getItemText()
-				<< std::endl;
-			itemCounter++;
-		}
-	}
+	void display();
 };
 
 class CliMenuItem {
@@ -49,3 +40,14 @@ public:
 		return itemText;
 	}
 };
+
+void CliMenu::display() {
+	int itemCounter = 1;
+	// use of undefined type 'CliMenuItem'
+	// -> nincs definialva!
+	for (CliMenuItem* clip : menuItems) {
+		std::cout << itemCounter << ": " << clip->getItemText()
+			<< std::endl;
+		itemCounter++;
+	}
+}
